@@ -1,0 +1,35 @@
+{
+  "name": "reactjsdemo",
+  "description": "A demo application with reactjs, typescript and webpack",
+  "main": "index.js",
+  "authors": [
+    "s.lee"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Reactjs",
+    "Typescript",
+    "Webpack"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/dev/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6",
+    "lodash": "^4.6.1",
+    "font-awesome": "^4.5.0",
+    "marked": "^0.3.5",
+    "react-bootstrap": "^0.28.3",
+    "react": "^0.14.7"
+  }
+}

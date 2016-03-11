@@ -1,0 +1,29 @@
+{
+  "name": "reactjsdemo",
+  "version": "0.0.1",
+  "description": "A demo application with reactjs, typescript and webpack",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack -w",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Reactjs",
+    "Typescript",
+    "Webpack"
+  ],
+  "author": "s.lee",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "webpack": "^1.12.14",
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^1.1.1",
+    "ts-loader": "^0.8.1",
+    "typescript": "^1.8.2"
+  }
+}
