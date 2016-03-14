@@ -20,7 +20,7 @@ var HOST = process.env.HOST || 'localhost';
 var PORT = process.env.PORT || 8080;
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'A Demo for Angular2 and Reactjs',
   baseUrl: '/',
   host: HOST,
   port: PORT,
@@ -52,7 +52,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', 'tsx', '.js']
   },
 
   module: {
@@ -76,7 +76,7 @@ module.exports = {
       // Support Angular 2 async routes via .async.ts
       // Support for .ts files.
       {
-        test: /\.ts$/,
+        test: /\.ts$|\.tsx$/,
         loader: 'awesome-typescript-loader',
         query: {
           // remove TypeScript helpers to be injected below by DefinePlugin

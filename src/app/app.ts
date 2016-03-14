@@ -44,6 +44,9 @@ import {Home} from './home/home';
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
+          <li router-active>
+            <a [routerLink]=" ['ReactDemo'] ">ReactDemo</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -65,6 +68,7 @@ import {Home} from './home/home';
   { path: '/home',  name: 'Home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
+  { path: '/reactDemo', name: 'ReactDemo', loader: () => require('es6-promise!./reactDemo/reactDemo')('ReactDemo') }
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';

@@ -9,7 +9,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 var HMR = helpers.hasProcessFlag('hot');
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'A Demo for Angular2 and Reactjs',
   baseUrl: '/',
   host: 'localhost',
   port: 3000,
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', 'tsx', '.js']
   },
 
   // Config for our build files
@@ -49,23 +49,19 @@ module.exports = {
 
   module: {
     preLoaders: [
-      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
       // TODO(gdi2290): `exclude: [ helpers.root('node_modules/rxjs') ]` fixed with rxjs 5 beta.3 release
       { test: /\.js$/, loader: "source-map-loader", exclude: [ helpers.root('node_modules/rxjs') ] }
     ],
     loaders: [
       // Support for .ts files.
-      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
-
+      { test: /\.ts$|\.tsx$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader' },
-
       // Support for CSS as raw text
       { test: /\.css$/,   loader: 'raw-loader' },
-
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
-
     ]
   },
 

@@ -10,7 +10,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', 'tsx', '.js']
   },
   module: {
     preLoaders: [
@@ -31,7 +31,7 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.ts$/,
+        test: /\.ts$|\.tsx$/,
         loader: 'awesome-typescript-loader',
         query: {
           "compilerOptions": {
