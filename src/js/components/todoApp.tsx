@@ -20,10 +20,10 @@ export class TodoApp extends React.Component<ITodoAppProps, {}> {
 					<h5 className="blue-text text-light-2">TODOアプリ</h5>
 					<blockquote className="grey-text text-light-2"> With React Redux Typescript MaterialUI</blockquote>
 					<div className="col offset-s3 s6">
-						<IndexLink to="/" className="waves-effect waves-light btn light-green">
+						<IndexLink to="/" className="waves-effect waves-light btn blue light-2">
 						<i className="fa fa-list"></i>&nbsp;TODOリスト</IndexLink>&nbsp;
-						<Link to="/manage" className="waves-effect waves-teal btn yellow"><i className="fa fa-gears"/>&nbsp;管理</Link>&nbsp;
-						<Link to="/grid" className="waves-effect waves-teal btn cyan"><i className="fa fa-gears"/>&nbsp;一覧</Link>
+						<Link to="/manage" className="waves-effect waves-teal btn lime light-2"><i className="fa fa-gears"/>&nbsp;管理</Link>&nbsp;
+						<Link to="/grid" className="waves-effect waves-teal btn grey light-2"><i className="fa fa-gears"/>&nbsp;一覧</Link>
 					</div>
 				</div>
 				{this.props.children}
