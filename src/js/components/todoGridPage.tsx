@@ -17,10 +17,14 @@ export interface ITodoGridPageProps extends React.Props<{}> {
 export class TodoGridPage extends React.Component<ITodoGridPageProps, {}> {
 	public render() {
 		let { todoList, dispatch }: ITodoGridPageProps = this.props;
+		let toggleTodo = (id: any) => {
+			dispatch(TodoAction.toggleTodo(id));
+			dispatch(MsgAction.toggleMsg('TODO状態を変更しました。', true));
+		};
 		let linkComp: React.ClassicComponentClass<{}> = React.createClass({
 			render: function(){
-				return <Checkbox defaultChecked={this.props.rowData.completed}
-				onClick={(x: any) => {dispatch(TodoAction.toggleTodo(this.props.rowData.id)); dispatch(MsgAction.toggleMsg('TODO状態を変更しました。', true));}}/>;
+				return (<Checkbox defaultChecked={this.props.rowData.completed}
+				onClick={() => {toggleTodo(this.props.rowData.id);}}/>);
 			}
 		});
 		let inputComponent: React.ClassicComponentClass<{}> = React.createClass({

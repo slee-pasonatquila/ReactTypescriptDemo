@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {createHashHistory} from 'history';
 import {Router, Route, IndexRoute} from 'react-router';
-import {ReduxTodoApp, ReduxTodoListPage, ReduxTodoListManagePage, ReduxTodoGridPage} from './components';
+import {reduxTodoApp, reduxTodoListPage, reduxTodoListManagePage, reduxTodoGridPage} from './components';
 import {Provider} from 'react-redux';
 import * as Redux from 'redux';
 import * as Reducers from './reducers';
@@ -11,10 +11,10 @@ import * as Reducers from './reducers';
 let history: any = createHashHistory();
 let routes: JSX.Element = (
 	<Router history={history}>
-		<Route path='/' component={ReduxTodoApp} >
-			<IndexRoute component={ReduxTodoListPage} />
-			<Route path='/manage' component={ReduxTodoListManagePage} />
-			<Route path='/grid' component={ReduxTodoGridPage} />
+		<Route path='/' component={reduxTodoApp} >
+			<IndexRoute component={reduxTodoListPage} />
+			<Route path='/manage' component={reduxTodoListManagePage} />
+			<Route path='/grid' component={reduxTodoGridPage} />
 		</Route>
 	</Router>
 );
