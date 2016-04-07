@@ -1,0 +1,124 @@
+$border: 1px solid #DDD;
+$defaultColor: #222;
+$backColor: #FFF;
+$padding: 5px;
+$marginBottom: 5px;
+$borderBottom: 1px solid #EDEDED;
+$paddingleft: 12px;
+$paddingright: 12px;
+$fontsize: 12px;
+$height: 20px;
+$fontfamily: Roboto, sans-serif;
+
+@mixin sectionToggle($textalign) {
+	float: left;
+	width: 50%;
+	text-align: $textalign;
+}
+
+@mixin section() {
+	clear: both;
+	display: table;
+	width: 100%;
+}
+
+@mixin pagers() {
+	float:left;
+	width:33%;
+	min-height:1px;
+	margin-top:5px;
+}
+
+@mixin td() {
+	padding-left:$paddingleft;
+	padding-right:$paddingright;
+	height:$height;
+	text-align:left;
+	font-size:$fontsize;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	background-color:inherit;
+}
+
+.griddle-container{
+	border: $border;
+}
+.griddle{
+	.top-section{
+		@include section();
+	}
+	.griddle-filter{
+		@include sectionToggle(left);
+		color: $defaultColor;
+		min-height: 1px;
+	}
+	.griddle-settings-toggle{
+		@include sectionToggle(right);
+	}
+	.griddle-settings{
+		background-color: $backColor;
+		border: $border;
+		color: $defaultColor;
+		padding: $padding;
+		margin-bottom: $marginBottom;
+		.griddle-columns{
+			@include section();
+			border-bottom: $borderBottom;
+			margin-bottom: $marginBottom;
+		}
+		.griddle-column-selection{
+			float: left;
+			width: 20%;
+		}
+	}
+	.griddle-previous{
+		@include pagers();
+	}
+	.griddle-next{
+		@include pagers();
+		text-align: right;
+	}
+	.griddle-page{
+		text-align: center;
+	}
+	table {
+		background-color: $backColor;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: $paddingleft;
+		padding-right: $paddingright;
+		width:100%;
+		border-collapse:collapse;
+		border-spacing:0;
+		table-layout:fixed;
+		font-family: $fontfamily;
+	}
+	thead {
+		border-bottom: $borderBottom;
+	}
+	th {
+		font-weight:normal;
+		font-size:$fontsize;
+		padding-left:$paddingleft;
+		padding-right:$paddingright;
+		height:$height;
+		text-align:left;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		color:#9e9e9e;
+		position:relative;
+		background-color:inherit;
+	}
+	tr{
+		border-bottom: $borderBottom;
+		color: $defaultColor;
+		height:$height;
+	}
+	td {
+		@include td();
+	}
+	.footer-container{
+		@include td();
+	}
+}
