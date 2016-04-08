@@ -1,25 +1,9 @@
 ///<reference path="../../../typings/browser.d.ts"/>
+import { createAction} from 'redux-actions';
+
 export enum msgActionTypes {
-	ToggleMsg = 10001
+	ToggleMsg = <any>"ToogleMsg"
 }
 
-export interface IMsgAction<TPayload> {
-	type: msgActionTypes;
-	payload: TPayload;
-}
-
-export class ToggleMsgPayload {
-	public isShow: boolean;
-	public msg: string;
-	constructor(pMsg: string, pIsShow: boolean = false) {
-		this.isShow = pIsShow;
-		this.msg = pMsg;
-	}
-}
-
-export function toggleMsg(msg: string, isShow: boolean): IMsgAction<ToggleMsgPayload> {
-	return {
-		type: msgActionTypes.ToggleMsg,
-		payload: new ToggleMsgPayload(msg, isShow)
-	};
-}
+export const toggleMsg =
+	createAction(<any>msgActionTypes.ToggleMsg, (pMsg: string, pIsShow: boolean = false) => ({msg: pMsg, isShow: pIsShow}));
