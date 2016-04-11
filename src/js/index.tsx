@@ -7,8 +7,11 @@ import {reduxTodoApp, reduxTodoListPage, reduxTodoListManagePage, reduxTodoGridP
 import {Provider} from 'react-redux';
 import * as Redux from 'redux';
 import * as Reducers from './reducers';
+import * as createLogger from 'redux-logger';
 
 let history: any = createHashHistory();
+const logger = createLogger();
+
 let routes: JSX.Element = (
 	<Router history={history}>
 		<Route path='/' component={reduxTodoApp} >
@@ -19,7 +22,7 @@ let routes: JSX.Element = (
 	</Router>
 );
 
-let store: Redux.Store = Redux.createStore(Reducers.todoApp);
+let store: Redux.Store = Redux.createStore(Reducers.todoApp, Redux.applyMiddleware(logger));
 
 ReactDOM.render(
 	<Provider store={store}>
