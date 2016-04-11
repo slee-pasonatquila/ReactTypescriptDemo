@@ -3,7 +3,6 @@
     "align": [
       true,
       "parameters",
-      "arguments",
       "statements"
     ],
     "ban": false,
@@ -20,13 +19,16 @@
       true,
       "tabs"
     ],
-    "interface-name": true,
+    "interface-name": [
+		true,
+		"always-prefix"
+	],
     "jsdoc-format": true,
     "label-position": true,
     "label-undefined": true,
     "max-line-length": [
       true,
-      140
+      200
     ],
     "member-access": true,
     "member-ordering": [

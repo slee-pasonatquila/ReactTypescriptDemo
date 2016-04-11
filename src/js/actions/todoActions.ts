@@ -7,21 +7,8 @@ export enum Types {
 	DeleteTodo = <any>"DeleteTodo"
 }
 
-export const addTodo = createAction(<any>Types.AddTodo,
-									(pText: string) => ({
-										text: pText,
-										completed : false,
-									})
-						);
+export const addTodo = createAction(<any>Types.AddTodo, (pText: string) => ({ text: pText, completed : false}));
 
-export const toggleTodo = createAction(<any>Types.ToggleTodo,
-								(pId: number) => ({
-									id: pId
-								})
-							);
+export const toggleTodo = createAction(<any>Types.ToggleTodo, (pId: number) => ({ id: pId}));
 
-export const deleteTodo = createAction(<any>Types.DeleteTodo,
-								(pId: number) => ({
-									id: pId
-								})
-							);
+export const deleteTodo = createAction(<any>Types.DeleteTodo, (pId: number) => ({id: pId}));

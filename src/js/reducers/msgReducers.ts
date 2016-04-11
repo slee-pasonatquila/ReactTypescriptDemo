@@ -9,7 +9,8 @@ export const msgs = handleActions({
 			msgContent: action.payload.msg,
 		}
 	),
-},{
+}, {
 	isShow: false,
 	msgContent: ''
-});
+	}
+);

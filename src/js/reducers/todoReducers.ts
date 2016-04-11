@@ -31,6 +31,4 @@ export const todos = handleActions({
 	[TodoAction.Types.AddTodo] : AddTodoPayload,
 	[TodoAction.Types.ToggleTodo] : ToggleTodoPayload,
 	[TodoAction.Types.DeleteTodo] : DeleteTodoPayload,
-}, {
-	todos: [],
-});
+}, {todos: []});
