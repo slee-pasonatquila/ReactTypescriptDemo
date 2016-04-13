@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as TodoModel from "../models/todoModels";
 import * as TodoAction from "../actions/todoActions";
 import {TodoListComposer} from "./todoList";
-import Alert from "react-s-alert";
 
 // todo削除ページ
 export interface ITodoListManagePageProps extends React.Props<{}> {
@@ -13,22 +12,12 @@ export interface ITodoListManagePageProps extends React.Props<{}> {
 
 export class TodoListManagePage extends React.Component<ITodoListManagePageProps, {}> {
 	public render() {
-		let doDel = (x: any): void => {
-			this.delTodo(x, dispatch);
-			Alert.success('TODOを削除しました。', {
-				position: 'top-right',
-				effect: 'scale',
-				beep: false,
-				timeout: 2000,
-				offset: 100,
-			});
-		};
 		let { todoList, dispatch }: ITodoListManagePageProps = this.props;
 		return (
 			<div className="row">
 				<TodoListComposer
 					todos={TodoModel.TodoUtils.toList(todoList.todos) }
-					onToggle={doDel}/>
+					onToggle={(x: any) => this.delTodo(x, dispatch)}/>
 			</div>
 		);
 	}

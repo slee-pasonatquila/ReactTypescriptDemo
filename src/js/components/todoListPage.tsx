@@ -30,10 +30,10 @@ export class TodoListPage extends React.Component<ITodoListPageProps, {}> {
 				<div>
 					<div className="row">
 						<TodoListComposer todos={TodoModel.TodoUtils.toList(todoList.todos)}
-							onToggle={(x: any) => {dispatch(TodoAction.toggleTodo(x));}}/>
+							onToggle={(x: any) => dispatch(TodoAction.toggleTodo(x))}/>
 					</div>
 					<TodoFormComposer
-						onAddTodo={(x: string) => {dispatch(TodoAction.addTodo(x));}}
+						onAddTodo={(x: string) => dispatch(TodoAction.addTodo(x))}
 						open={false}/>
 				</div>
 			</MuiThemeProvider>

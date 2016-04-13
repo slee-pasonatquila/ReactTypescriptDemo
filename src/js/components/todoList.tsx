@@ -5,7 +5,6 @@ import Paper from 'material-ui/lib/paper';
 import List from 'material-ui/lib/lists/list';
 import {TodoComposer} from "./todoItem";
 import Subheader from 'material-ui/lib/Subheader';
-import Alert from "react-s-alert";
 
 // todoのリスト
 interface ITodoListComposerProps extends React.Props<{}> {
@@ -15,18 +14,8 @@ interface ITodoListComposerProps extends React.Props<{}> {
 
 export class TodoListComposer extends React.Component<ITodoListComposerProps, {}> {
 	public render() {
-		let doModifyTodo = (x: any): void => {
-			this.props.onToggle(x);
-			Alert.success('TODO状態を変更しました。', {
-				position: 'top-right',
-				effect: 'scale',
-				beep: false,
-				timeout: 2000,
-				offset: 100,
-			});
-		};
 		let todos: JSX.Element[] = this.props.todos.map(
-			(x: TodoModel.Todo) => <TodoComposer key={x.id} todo={x} onToggle={doModifyTodo}/>
+			(x: TodoModel.Todo) => <TodoComposer key={x.id} todo={x} onToggle={(target: any) => this.props.onToggle(target)}/>
 		);
 		return (
 			<Paper zDepth={1}>

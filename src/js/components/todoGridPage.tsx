@@ -5,7 +5,6 @@ import * as TodoAction from "../actions/todoActions";
 import TextField from 'material-ui/lib/text-field';
 import Checkbox from 'material-ui/lib/checkbox';
 import * as Griddle from "griddle-react";
-import Alert from "react-s-alert";
 
 export interface ITodoGridPageProps extends React.Props<{}> {
 	todoList?: TodoModel.TodoList;
@@ -15,20 +14,12 @@ export interface ITodoGridPageProps extends React.Props<{}> {
 export class TodoGridPage extends React.Component<ITodoGridPageProps, {}> {
 	public render() {
 		let { todoList, dispatch }: ITodoGridPageProps = this.props;
-		let toggleTodo = (id: any) => {
-			dispatch(TodoAction.toggleTodo(id));
-			Alert.success('TODO状態を変更しました。', {
-				position: 'top-right',
-				effect: 'scale',
-				beep: false,
-				timeout: 2000,
-				offset: 100,
-			});
-		};
 		let linkComp: React.ClassicComponentClass<{}> = React.createClass({
 			render: function(){
-				return (<Checkbox defaultChecked={this.props.rowData.completed}
-				onClick={() => {toggleTodo(this.props.rowData.id);}}/>);
+				return (
+					<Checkbox defaultChecked={this.props.rowData.completed}
+						onClick={() => dispatch(TodoAction.toggleTodo(this.props.rowData.id))}/>
+				);
 			}
 		});
 		let inputComponent: React.ClassicComponentClass<{}> = React.createClass({
