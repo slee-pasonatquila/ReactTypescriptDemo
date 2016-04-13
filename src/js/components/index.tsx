@@ -11,8 +11,7 @@ injectTapEventPlugin();
 function selectTodoListPage(state: Reducers.ITodoAppState): ITodoListPageProps {
 	'use strict';
 	return {
-		todoList: state.todos,
-		msgs: state.msgs,
+		todoList: state.todos
 	};
 }
 export const reduxTodoListPage: __React.ComponentClass<any> = ReactRedux.connect(selectTodoListPage)(TodoListPage);
@@ -20,8 +19,7 @@ export const reduxTodoListPage: __React.ComponentClass<any> = ReactRedux.connect
 function selectTodoListManagePage(state: Reducers.ITodoAppState): ITodoListManagePageProps {
 	'use strict';
 	return {
-		todoList: state.todos,
-		msgs: state.msgs,
+		todoList: state.todos
 	};
 }
 export const reduxTodoListManagePage: __React.ComponentClass<any> = ReactRedux.connect(selectTodoListManagePage)(TodoListManagePage);
@@ -29,8 +27,7 @@ export const reduxTodoListManagePage: __React.ComponentClass<any> = ReactRedux.c
 function selectTodoGridPage(state: Reducers.ITodoAppState): ITodoGridPageProps {
 	'use strict';
 	return {
-		todoList: state.todos,
-		msgs: state.msgs,
+		todoList: state.todos
 	};
 }
 
@@ -39,8 +36,7 @@ export const reduxTodoGridPage: __React.ComponentClass<any> = ReactRedux.connect
 function selectTodoApp(state: Reducers.ITodoAppState): ITodoAppProps {
 	'use strict';
 	return {
-		todoList: state.todos,
-		msgs: state.msgs
+		todoList: state.todos
 	};
 }
 

@@ -1,14 +1,11 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
 import {Link, IndexLink} from 'react-router';
-import {MsgBar} from "./msgBar";
 import * as TodoModel from "../models/todoModels";
-import * as MsgModel from "../models/msgModels";
-import * as MsgAction from '../actions/msgActions';
+import Alert from 'react-s-alert';
 
 export interface ITodoAppProps extends React.Props<{}> {
 	todoList?: TodoModel.TodoList;
-	msgs?: MsgModel.AlertMessage;
 	dispatch?: Redux.Dispatch;
 }
 
@@ -28,7 +25,7 @@ export class TodoApp extends React.Component<ITodoAppProps, {}> {
 				</div>
 				{this.props.children}
 				<div className="row">
-					<MsgBar msg={this.props.msgs} onToggle={(msg: string, isShow: boolean) => this.props.dispatch(MsgAction.toggleMsg(msg, isShow))} />
+					<Alert stack={{limit: 3}} />
 				</div>
 			</div>
 		);

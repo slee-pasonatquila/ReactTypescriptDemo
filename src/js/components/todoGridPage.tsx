@@ -1,16 +1,14 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
 import * as TodoModel from "../models/todoModels";
-import * as MsgModel from "../models/msgModels";
 import * as TodoAction from "../actions/todoActions";
-import * as MsgAction from "../actions/msgActions";
 import TextField from 'material-ui/lib/text-field';
 import Checkbox from 'material-ui/lib/checkbox';
 import * as Griddle from "griddle-react";
+import Alert from "react-s-alert";
 
 export interface ITodoGridPageProps extends React.Props<{}> {
 	todoList?: TodoModel.TodoList;
-	msgs?: MsgModel.AlertMessage;
 	dispatch?: Redux.Dispatch;
 }
 
@@ -19,7 +17,13 @@ export class TodoGridPage extends React.Component<ITodoGridPageProps, {}> {
 		let { todoList, dispatch }: ITodoGridPageProps = this.props;
 		let toggleTodo = (id: any) => {
 			dispatch(TodoAction.toggleTodo(id));
-			dispatch(MsgAction.toggleMsg('TODO状態を変更しました。', true));
+			Alert.success('TODO状態を変更しました。', {
+				position: 'top-right',
+				effect: 'scale',
+				beep: false,
+				timeout: 2000,
+				offset: 100,
+			});
 		};
 		let linkComp: React.ClassicComponentClass<{}> = React.createClass({
 			render: function(){
