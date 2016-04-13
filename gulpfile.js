@@ -33,7 +33,7 @@ gulp.task("tslint", function() {
 gulp.task('ts', ['tslint'], function() {
     return gulp.src(['src/**/*.{ts,tsx}'])
         .pipe(ts({
-            target: "ES6",
+            target: "ES5",
             jsx: "react",
             module: "commonjs"
         }))
@@ -53,7 +53,7 @@ gulp.task('bundle', ['ts'], function() {
             resolve: {
                 extensions: ['', '.js']
             },
-            //plugins: [new webpack.optimize.UglifyJsPlugin()]
+            plugins: [new webpack.optimize.UglifyJsPlugin()]
         }))
         .pipe(gulp.dest('dist/js'));
 });
@@ -79,4 +79,4 @@ gulp.task('watch', function() {
 	gulp.watch(['./src/**/*.jade','!src/**/_*.jade'], ['jade']);
 });
 
-gulp.task('default', ['clean', 'copy', 'scss', 'jade', 'bundle']);
+gulp.task('default', ['copy', 'scss', 'jade', 'bundle']);
