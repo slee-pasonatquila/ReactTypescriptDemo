@@ -10,7 +10,7 @@ import * as Reducers from './reducers';
 import * as createLogger from 'redux-logger';
 
 let history: any = createHashHistory();
-const logger = createLogger();
+const logger: Redux.Middleware = createLogger();
 
 let routes: JSX.Element = (
 	<Router history={history}>

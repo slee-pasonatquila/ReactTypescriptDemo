@@ -5,5 +5,5 @@ export enum msgActionTypes {
 	ToggleMsg = <any>"ToogleMsg"
 }
 
-export const toggleMsg =
+export const toggleMsg: any =
 	createAction(<any>msgActionTypes.ToggleMsg, (pMsg: string, pIsShow: boolean = false) => ({msg: pMsg, isShow: pIsShow}));

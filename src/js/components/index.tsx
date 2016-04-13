@@ -6,9 +6,8 @@ import {ITodoListManagePageProps, TodoListManagePage} from "./todoMngPage";
 import {ITodoGridPageProps, TodoGridPage} from "./todoGridPage";
 import {ITodoAppProps, TodoApp} from "./todoApp";
 
-import injectTapEventPlugin = require('react-tap-event-plugin');
+import * as injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-
 function selectTodoListPage(state: Reducers.ITodoAppState): ITodoListPageProps {
 	'use strict';
 	return {
@@ -16,7 +15,7 @@ function selectTodoListPage(state: Reducers.ITodoAppState): ITodoListPageProps {
 		msgs: state.msgs,
 	};
 }
-export const reduxTodoListPage = ReactRedux.connect(selectTodoListPage)(TodoListPage);
+export const reduxTodoListPage: __React.ComponentClass<any> = ReactRedux.connect(selectTodoListPage)(TodoListPage);
 
 function selectTodoListManagePage(state: Reducers.ITodoAppState): ITodoListManagePageProps {
 	'use strict';
@@ -25,7 +24,7 @@ function selectTodoListManagePage(state: Reducers.ITodoAppState): ITodoListManag
 		msgs: state.msgs,
 	};
 }
-export const reduxTodoListManagePage = ReactRedux.connect(selectTodoListManagePage)(TodoListManagePage);
+export const reduxTodoListManagePage: __React.ComponentClass<any> = ReactRedux.connect(selectTodoListManagePage)(TodoListManagePage);
 
 function selectTodoGridPage(state: Reducers.ITodoAppState): ITodoGridPageProps {
 	'use strict';
@@ -35,7 +34,7 @@ function selectTodoGridPage(state: Reducers.ITodoAppState): ITodoGridPageProps {
 	};
 }
 
-export const reduxTodoGridPage = ReactRedux.connect(selectTodoGridPage)(TodoGridPage);
+export const reduxTodoGridPage: __React.ComponentClass<any> = ReactRedux.connect(selectTodoGridPage)(TodoGridPage);
 
 function selectTodoApp(state: Reducers.ITodoAppState): ITodoAppProps {
 	'use strict';
@@ -45,4 +44,4 @@ function selectTodoApp(state: Reducers.ITodoAppState): ITodoAppProps {
 	};
 }
 
-export const reduxTodoApp = ReactRedux.connect(selectTodoApp)(TodoApp);
+export const reduxTodoApp: __React.ComponentClass<any> = ReactRedux.connect(selectTodoApp)(TodoApp);

@@ -1,4 +1,3 @@
-///<reference path="../../../typings/browser.d.ts"/>
 export class AlertMessage {
 	public msgContent: string;
 	public isShow: boolean;
