@@ -17,6 +17,7 @@
     "griddle-react": "^0.4.1",
     "gulp-tslint": "^4.3.5",
     "gulp-typescript": "^2.12.2",
+    "immutable": "^3.7.6",
     "jquery": "^2.2.3",
     "lodash": "^4.9.0",
     "material-ui": "^0.15.0-alpha.2",
