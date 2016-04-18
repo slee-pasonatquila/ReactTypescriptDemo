@@ -2,8 +2,8 @@
 import * as React from 'react';
 import * as TodoModel from "../models/todoModels";
 import * as TodoAction from "../actions/todoActions";
-import TextField from 'material-ui/lib/text-field';
-import Checkbox from 'material-ui/lib/checkbox';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 import * as Griddle from "griddle-react";
 
 export interface ITodoGridPageProps extends React.Props<{}> {

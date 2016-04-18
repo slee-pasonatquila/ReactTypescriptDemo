@@ -1,7 +1,7 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
-import ListItem from 'material-ui/lib/lists/list-item';
-import Divider from 'material-ui/lib/divider';
+import {ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 import * as TodoModel from "../models/todoModels";
 
 // todo 1項目に対応するコンポーネント

@@ -1,10 +1,9 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
-
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 // todoの入力フォーム
 interface ITodoFormComposerProps extends React.Props<{}> {
 	onAddTodo: (text: string) => void;

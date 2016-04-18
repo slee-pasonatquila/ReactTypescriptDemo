@@ -1,10 +1,10 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
 import * as TodoModel from "../models/todoModels";
-import Paper from 'material-ui/lib/paper';
-import List from 'material-ui/lib/lists/list';
+import Paper from 'material-ui/Paper';
+import {List} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import {TodoComposer} from "./todoItem";
-import Subheader from 'material-ui/lib/Subheader';
 
 // todoのリスト
 interface ITodoListComposerProps extends React.Props<{}> {
