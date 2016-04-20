@@ -16,8 +16,8 @@ export class TodoListPage extends React.Component<ITodoListPageProps, {}> {
 		return (
 				<div>
 					<div className="row">
-						<TodoListComposer todos={TodoModel.TodoUtils.toList(todoList.todos)}
-							onToggle={(x: any) => dispatch(TodoAction.toggleTodo(x))}/>
+						<TodoListComposer todos={todoList.toArray()}
+							onToggle={(x: number) => dispatch(TodoAction.toggleTodo(x))}/>
 					</div>
 					<TodoFormComposer
 						onAddTodo={(x: string) => dispatch(TodoAction.addTodo(x))}

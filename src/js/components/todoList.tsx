@@ -15,7 +15,8 @@ interface ITodoListComposerProps extends React.Props<{}> {
 export class TodoListComposer extends React.Component<ITodoListComposerProps, {}> {
 	public render() {
 		let todos: JSX.Element[] = this.props.todos.map(
-			(x: TodoModel.Todo) => <TodoComposer key={x.id} todo={x} onToggle={(target: any) => this.props.onToggle(target)}/>
+			(x: TodoModel.Todo, index: number) =>
+				<TodoComposer key={index} todo={x} onToggle={(target: any) => this.props.onToggle(target)}/>
 		);
 		return (
 			<Paper zDepth={1}>

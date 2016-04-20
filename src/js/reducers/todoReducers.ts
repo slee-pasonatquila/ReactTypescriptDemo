@@ -2,13 +2,14 @@
 import * as TodoAction from "../actions/todoActions";
 import * as TodoModel from "../models/todoModels";
 import { handleActions } from 'redux-actions';
-import assign = require('object-assign');
 import Alert from "react-s-alert";
+import * as immutable from "immutable";
 
-function AddTodoPayload(state, action) {
-	let todos: {[key: number]: TodoModel.Todo} = <{ [key: number]: TodoModel.Todo }>assign({}, state.todos);
-	let todo: TodoModel.Todo = new TodoModel.Todo(action.payload.text);
-	todos[todo.id] = todo;
+const initialState = immutable.List<TodoModel.Todo>([]);
+
+function AddTodoPayload(state = initialState, action) {
+	"use strict";
+	let todos = state.push(new TodoModel.Todo(action.payload.text));
 	Alert.success('TODOを追加しました。', {
 				position: 'top-right',
 				effect: 'scale',
@@ -16,16 +17,18 @@ function AddTodoPayload(state, action) {
 				timeout: 2000,
 				offset: 100,
 			});
-	return <TodoModel.TodoList>assign({}, state, <TodoModel.TodoList>{
-		todos: todos,
-	});
+	return todos;
 }
 
-function ToggleTodoPayload(state, action) {
-	let todos: {[key: number]: TodoModel.Todo} = <{ [key: number]: TodoModel.Todo }>assign({}, state.todos);
-	let target: TodoModel.Todo = <TodoModel.Todo>assign({}, todos[action.payload.id]);
-	target.completed = !target.completed;
-	todos[action.payload.id] = target;
+function ToggleTodoPayload(state = initialState, action) {
+	"use strict";
+	let targetIndex = state.findIndex((val) => {
+		return val.id === action.payload.id;
+	});
+	let target = state.get(targetIndex);
+	let newTarget = new TodoModel.Todo(target.text);
+	newTarget.id = target.id;
+	newTarget.completed = !target.completed;
 	Alert.success('TODO状態を更新しました。', {
 				position: 'top-right',
 				effect: 'scale',
@@ -33,12 +36,12 @@ function ToggleTodoPayload(state, action) {
 				timeout: 2000,
 				offset: 100,
 			});
-	return <TodoModel.TodoList>assign({}, state, <TodoModel.TodoList>{ todos: todos});
+	let todos = state.set(targetIndex, newTarget);
+	return todos;
 }
 
-function DeleteTodoPayload(state, action) {
-	let todos: {[key: number]: TodoModel.Todo} = <{ [key: number]: TodoModel.Todo }>assign({}, state.todos);
-	delete todos[action.payload.id];
+function DeleteTodoPayload(state = initialState, action) {
+	"use strict";
 	Alert.success('TODOを削除しました。', {
 				position: 'top-right',
 				effect: 'scale',
@@ -46,11 +49,15 @@ function DeleteTodoPayload(state, action) {
 				timeout: 2000,
 				offset: 100,
 			});
-	return <TodoModel.TodoList>assign({}, state, <TodoModel.TodoList>{ todos: todos});
+	let targetIndex = state.findIndex((val) => {
+		return val.id === action.payload.id;
+	});
+	let todos = state.delete(targetIndex);
+	return todos;
 }
 
-export const todos = handleActions({
+export const todoActions = handleActions({
 	[TodoAction.Types.AddTodo] : AddTodoPayload,
 	[TodoAction.Types.ToggleTodo] : ToggleTodoPayload,
 	[TodoAction.Types.DeleteTodo] : DeleteTodoPayload,
-}, {todos: []});
+}, initialState);

@@ -16,12 +16,12 @@ export class TodoListManagePage extends React.Component<ITodoListManagePageProps
 		return (
 			<div className="row">
 				<TodoListComposer
-					todos={TodoModel.TodoUtils.toList(todoList.todos) }
-					onToggle={(x: any) => this.delTodo(x, dispatch)}/>
+					todos={todoList.toArray() }
+					onToggle={(x: number) => this.delTodo(x, dispatch)}/>
 			</div>
 		);
 	}
-	private delTodo(x: any, dispatch: any) {
+	private delTodo(x: number, dispatch: any) {
 		if (window.confirm('該当TODOを削除します、よろしいでしょうか？')) {
 			dispatch(TodoAction.deleteTodo(x));
 		}

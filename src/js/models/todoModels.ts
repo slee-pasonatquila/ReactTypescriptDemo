@@ -1,5 +1,7 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as _ from "lodash";
+import * as immutable from "immutable";
+
 // todoの1項目
 export class Todo {
 	public id: number = Date.now();
@@ -11,27 +13,4 @@ export class Todo {
 	}
 }
 
-// todoのリストを管理する
-export class TodoList {
-	// todoのハッシュ
-	public todos: { [key: number]: Todo } = {};
-}
-
-// todo関連のユーテリティ
-export class TodoUtils {
-	public static toList(todos: { [key: number]: Todo }) {
-		let items: Todo[] = [];
-		_.forEach(todos, (val: Todo) => {
-			items.push(val);
-		});
-		return items.sort((a: Todo, b: Todo) => {
-			if (a.id > b.id) {
-				return 1;
-			}
-			if (a.id < b.id) {
-				return -1;
-			}
-			return 0;
-		});
-	}
-}
+export interface TodoList extends immutable.List<Todo> {}

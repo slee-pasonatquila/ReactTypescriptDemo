@@ -35,7 +35,8 @@ gulp.task('ts', ['tslint'], function() {
         .pipe(ts({
             target: "ES5",
             jsx: "react",
-            module: "commonjs"
+            module: "commonjs", 
+            allowJS: true
         }))
         .js
         .pipe(gulp.dest('build'));

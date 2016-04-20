@@ -14,7 +14,6 @@
   "author": "S.Lee",
   "license": "MIT",
   "dependencies": {
-    "griddle-react": "^0.5.0",
     "gulp-tslint": "^4.3.5",
     "gulp-typescript": "^2.13.0",
     "immutable": "^3.8.0",
@@ -29,7 +28,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.2.4",
     "react-router-redux": "^4.0.2",
-    "react-s-alert": "^1.1.1",
+    "react-s-alert": "^1.1.2",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.4.0",
     "redux-actions": "^0.9.1",
