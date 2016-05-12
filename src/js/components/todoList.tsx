@@ -1,9 +1,9 @@
 ///<reference path="../../../typings/browser.d.ts"/>
 import * as React from 'react';
 import * as TodoModel from "../models/todoModels";
-import Paper from 'material-ui/Paper';
-import {List} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
+import {Paper} from 'material-ui';
+import {List} from 'material-ui';
+import Subheader from 'material-ui';
 import {TodoComposer} from "./todoItem";
 
 // todoのリスト

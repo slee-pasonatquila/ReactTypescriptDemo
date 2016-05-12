@@ -1,3 +1,9 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+    "sfdc": {
+        "username": "maruhan_pasonatquila@pasonatquila.com.dev2",
+        "password": "Ptql2015",
+        "token": "${ Token }",
+        "autoCompile": true
+    }
 }

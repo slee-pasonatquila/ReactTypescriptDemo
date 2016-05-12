@@ -14,8 +14,6 @@
   "author": "S.Lee",
   "license": "MIT",
   "dependencies": {
-    "gulp-tslint": "^4.3.5",
-    "gulp-typescript": "^2.13.0",
     "immutable": "^3.8.0",
     "jquery": "^2.2.3",
     "lodash": "^4.11.1",
@@ -32,9 +30,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.4.0",
     "redux-actions": "^0.9.1",
-    "redux-logger": "^2.6.1",
-    "tslint": "^3.7.4",
-    "webpack": "^1.13.0"
+    "redux-logger": "^2.6.1"
   },
   "devDependencies": {
     "del": "^2.2.0",
