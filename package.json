@@ -1,14 +1,12 @@
 {
-  "name": "reduxdemo",
+  "name": "typescript_boilerplate",
   "version": "1.0.0",
-  "description": "A demo of redux and react",
+  "description": "A demo project for typescript development",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Redux",
-    "React",
     "Typescript"
   ],
   "author": "S.Lee",
@@ -33,14 +31,20 @@
     "redux-logger": "^2.6.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
+    "gulp-mocha": "^2.2.0",
     "gulp-sass": "^2.2.0",
     "gulp-tslint": "^4.3.5",
     "gulp-typescript": "^2.13.0",
     "gulp-webpack": "^1.5.0",
+    "run-sequence": "^1.1.5",
     "tslint": "^3.7.4",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "chai-immutable": "^1.5.4",
+    "react-addons-test-utils": "^15.0.1",
+    "jsdom": "^8.4.0"
   }
 }

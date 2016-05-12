@@ -6,10 +6,14 @@
     "moment": "registry:npm/moment#2.10.5+20160211003958"
   },
   "ambientDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160316155526",
+    "jsdom": "registry:dt/jsdom#2.0.0+20160316155526",
     "lodash": "registry:dt/lodash#3.10.0+20160327004937",
     "material-ui": "registry:dt/material-ui#0.14.4+20160501141041",
     "materialize-css": "registry:dt/materialize-css#0.97.5+20160317120654",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160509154515",
     "object-assign": "registry:dt/object-assign#4.0.1+20160316155526",
     "react": "registry:dt/react#0.14.0+20160319053454",
     "react-dom": "registry:dt/react-dom#0.14.0+20160316155526",

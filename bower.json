@@ -1,0 +1,27 @@
+{
+	"name": "TypescriptBoilerplate",
+	"description": "A demo project for typescript development",
+	"main": "index.js",
+	"authors": [
+		"S.Lee"
+	],
+	"license": "MIT",
+	"keywords": [
+		"Typescript",
+		"React",
+		"Webpack",
+		"Gulp"
+	],
+	"moduleType": [
+		"es6",
+		"node"
+	],
+	"homepage": "",
+	"dependencies": {
+		"Materialize": "materialize#^0.97.6",
+		"jquery": "^2.2.3",
+		"lodash": "^4.11.1",
+		"moment": "^2.13.0",
+		"font-awesome": "^4.6.1"
+	}
+}

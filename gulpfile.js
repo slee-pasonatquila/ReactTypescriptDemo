@@ -6,6 +6,8 @@ var del = require('del');
 var gulpWebpack = require('gulp-webpack'),
     webpack = require('webpack');
 var jade = require('gulp-jade');
+var runSequence = require('run-sequence');
+var mocha = require('gulp-mocha');
 
 gulp.task('clean', function() {
     del(['dist']);
@@ -18,9 +20,28 @@ gulp.task('cleanTemp', function() {
 
 gulp.task('copy', function() {
     gulp.src(
-        [ 'src/thirdparty/**/*','!src/css/*','!src/ts/*', '!src/jade/*', '!src/css','!src/ts', '!src/jade' ],
-        { base: 'src' }
-    ).pipe(gulp.dest('dist'));
+		[
+			'src/thirdparty/**/*',
+			'public/thirdparty/jquery/dist/jquery.min.js',
+			'public/thirdparty//lodash/dist/lodash.min.js',
+			'public/thirdparty/moment/min/moment-with-locales.min.js'
+		]
+	).pipe(gulp.dest('dist/thirdparty/'));
+	gulp.src(
+		[
+			'public/thirdparty/font-awesome/css/font-awesome.min.css'
+		]
+	).pipe(gulp.dest('dist/thirdparty/font-awesome'));
+	gulp.src(
+		[
+			'public/thirdparty/font-awesome/fonts/**/*'
+		]
+	).pipe(gulp.dest('dist/thirdparty/font-awesome/fonts'));
+	gulp.src(
+		[
+			'public/thirdparty/Materialize/dist/**/*'
+		]
+	).pipe(gulp.dest('dist/thirdparty/Materialize'));
 });
 gulp.task("tslint", function() {
     gulp.src([
@@ -30,19 +51,25 @@ gulp.task("tslint", function() {
         configuration: "tslint.json"
     }))
 });
-gulp.task('ts', ['tslint'], function() {
-    return gulp.src(['src/**/*.{ts,tsx}'])
-        .pipe(ts({
-            target: "ES5",
-            jsx: "react",
-            module: "commonjs", 
-            allowJS: true
-        }))
-        .js
-        .pipe(gulp.dest('build'));
+gulp.task('test', function() {
+    return gulp.src('./build/test/**/*.@(js|jsx)')
+        .pipe(mocha({
+			require: './build/test/setup.js'
+		}))
+        .once('error', function() {
+            process.exit(1);
+        })
+});
+gulp.task('ts', function() {
+    var tsProject = ts.createProject('tsconfig.json');
+    var tsResult = gulp.src([
+                        'src/**/*.{ts,tsx}'
+                   ])
+                   .pipe(ts(tsProject));
+    return tsResult.js.pipe(gulp.dest('build'));
 });
 
-gulp.task('bundle', ['ts'], function() {
+gulp.task('bundle', function() {
     gulp.src('./build/js/**/*.js')
         .pipe(gulpWebpack({
             entry: ['./build/js/index.js'],
@@ -54,7 +81,24 @@ gulp.task('bundle', ['ts'], function() {
             resolve: {
                 extensions: ['', '.js']
             },
-            plugins: [new webpack.optimize.UglifyJsPlugin()]
+            plugins: [
+                new webpack.optimize.DedupePlugin(),
+				new webpack.optimize.AggressiveMergingPlugin(),
+				new webpack.ProvidePlugin({
+					$: 'jquery',
+					_: 'lodash',
+					React: 'react',
+					ReactDOM: 'react-dom'
+				}),
+				new webpack.optimize.UglifyJsPlugin({
+					drop_debugger: true,
+					dead_code: true,
+					booleans: true,
+					unused: true,
+					warnings: false,
+					drop_console: false
+				})
+            ]
         }))
         .pipe(gulp.dest('dist/js'));
 });
@@ -74,10 +118,12 @@ gulp.task('jade', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['src/thirdparty/**/*', '!src/ts/*', '!src/css/*', '!src/jade/*', '!src/css','!src/ts', '!src/jade'], ['copy']);
+    gulp.watch(['public/thirdpartys/**/*', '!src/ts/*', '!src/css/*', '!src/jade/*', '!src/css','!src/ts', '!src/jade'], ['copy']);
     gulp.watch('src/**/*.{ts,tsx}', ['bundle']);
     gulp.watch('src/css/*.scss', ['scss']);
 	gulp.watch(['./src/**/*.jade','!src/**/_*.jade'], ['jade']);
 });
 
-gulp.task('default', ['copy', 'scss', 'jade', 'bundle']);
+gulp.task('default', function() {
+    return runSequence('tslint', 'ts', 'test', 'bundle', 'scss', 'jade', 'copy');
+});
