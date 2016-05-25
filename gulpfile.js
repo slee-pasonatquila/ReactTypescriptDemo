@@ -98,7 +98,19 @@ gulp.task('bundle', function() {
 					warnings: false,
 					drop_console: false
 				})
-            ]
+            ],
+            module: {
+				loaders: [
+					{
+						test: /\.js[x]?$/,
+						exclude: /node_modules/,
+						loader: 'babel',
+						query: {
+							presets: ['react', 'es2015']
+						}
+					}
+				]
+			}
         }))
         .pipe(gulp.dest('dist/js'));
 });
