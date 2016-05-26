@@ -1,0 +1,4 @@
+rules/*.js
+dist/**/*
+gulpfile.js
+.eslintrc.js
