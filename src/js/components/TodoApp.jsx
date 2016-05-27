@@ -8,7 +8,7 @@ import Alert from 'react-s-alert';
 
 export default class TodoApp extends React.Component {
 	componentDidMount() {
-		this.props.showMessage('MSG_INFO', 'App is started.');
+		this.props.msgActions.showMessage('MSG_INFO', 'App is started.');
 	}
 	getNbActiveItems() {
 		if (this.props.todos) {
@@ -23,12 +23,12 @@ export default class TodoApp extends React.Component {
 		return (
 			<div>
 				<section className="todoapp">
-					<TodoHeader addItem={this.props.addItemSync}/>
+					<TodoHeader addItem={this.props.todoActions.addItemSync}/>
 					<TodoList {...this.props} />
-					<TodoTools  changeFilter={this.props.changeFilter}
+					<TodoTools  changeFilter={this.props.todoActions.changeFilter}
 						filter={this.props.filter}
 						nbActiveItems={this.getNbActiveItems()}
-						clearCompleted={this.props.clearCompleted}
+						clearCompleted={this.props.todoActions.clearCompleted}
 					/>
 				</section>
 				<Alert stack={{ limit: 3 }} effect="slide" timeout={2000}/>
@@ -41,12 +41,16 @@ export default class TodoApp extends React.Component {
 TodoApp.propTypes = {
 	todos: React.PropTypes.arrayOf(React.PropTypes.object),
 	filter: React.PropTypes.string,
-	addItemSync: React.PropTypes.func,
-	changeFilter: React.PropTypes.func,
-	clearCompleted: React.PropTypes.func,
-	toggleComplete: React.PropTypes.func,
-	doneEditing: React.PropTypes.func,
-	cancelEditing: React.PropTypes.func,
-	deleteItem: React.PropTypes.func,
-	showMessage: React.PropTypes.func
+	todoActions: {
+		addItemSync: React.PropTypes.func,
+		changeFilter: React.PropTypes.func,
+		clearCompleted: React.PropTypes.func,
+		toggleComplete: React.PropTypes.func,
+		doneEditing: React.PropTypes.func,
+		cancelEditing: React.PropTypes.func,
+		deleteItem: React.PropTypes.func
+	},
+	msgActions: {
+		showMessage: React.PropTypes.func
+	}
 };

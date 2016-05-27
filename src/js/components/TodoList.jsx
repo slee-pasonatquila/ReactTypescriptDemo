@@ -30,11 +30,11 @@ export default class TodoList extends React.Component {
 							id={item.get('id')}
 							isCompleted={this.isCompleted(item)}
 							isEditing={item.get('editing')}
-							doneEditing={this.props.doneEditing}
-							cancelEditing={this.props.cancelEditing}
-							toggleComplete={this.props.toggleComplete}
-							deleteItem={this.props.deleteItem}
-							editItem={this.props.editItem}
+							doneEditing={this.props.todoActions.doneEditing}
+							cancelEditing={this.props.todoActions.cancelEditing}
+							toggleComplete={this.props.todoActions.toggleComplete}
+							deleteItem={this.props.todoActions.deleteItem}
+							editItem={this.props.todoActions.editItem}
 						/>
 					)}
 				</ul>
@@ -46,9 +46,11 @@ export default class TodoList extends React.Component {
 TodoList.propTypes = {
 	todos: React.PropTypes.arrayOf(React.PropTypes.object),
 	filter: React.PropTypes.string,
-	toggleComplete: React.PropTypes.func,
-	cancelEditing: React.PropTypes.func,
-	doneEditing: React.PropTypes.func,
-	editItem: React.PropTypes.func,
-	deleteItem: React.PropTypes.func
+	todoActions: {
+		toggleComplete: React.PropTypes.func,
+		cancelEditing: React.PropTypes.func,
+		doneEditing: React.PropTypes.func,
+		editItem: React.PropTypes.func,
+		deleteItem: React.PropTypes.func
+	}
 };

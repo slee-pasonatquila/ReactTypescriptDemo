@@ -1,6 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import TodoList from '../../src/js/components/TodoList';
+import * as todoActions from '../../src/js/actions/todoActions';
 import { expect } from 'chai';
 import { List, Map } from 'immutable';
 
@@ -13,8 +14,15 @@ describe('TodoList', () => {
 			Map({ id: 3, text: 'Immutable', status: 'completed' })
 		);
 		const filter = 'completed';
+		const actions = {
+			toggleComplete: todoActions.toggleComplete,
+			cancelEditing: todoActions.cancelEditing,
+			doneEditing: todoActions.doneEditing,
+			editItem: todoActions.editItem,
+			deleteItem: todoActions.deleteItem
+		};
 		const component = renderIntoDocument(
-			<TodoList filter={filter} todos={todos} />
+			<TodoList filter={filter} todos={todos} todoActions={actions}/>
 		);
 		const items = scryRenderedDOMComponentsWithTag(component, 'li');
 
@@ -29,8 +37,15 @@ describe('TodoList', () => {
 			Map({ id: 3, text: 'Immutable', status: 'completed' })
 		);
 		const filter = 'all';
+		const actions = {
+			toggleComplete: todoActions.toggleComplete,
+			cancelEditing: todoActions.cancelEditing,
+			doneEditing: todoActions.doneEditing,
+			editItem: todoActions.editItem,
+			deleteItem: todoActions.deleteItem
+		};
 		const component = renderIntoDocument(
-			<TodoList filter={filter} todos={todos} />
+			<TodoList filter={filter} todos={todos} todoActions={actions}/>
 		);
 		const items = scryRenderedDOMComponentsWithTag(component, 'li');
 

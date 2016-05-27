@@ -11,6 +11,9 @@ function mapStateToProps(state) {
 	};
 }
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators(Object.assign({}, todoActions, msgActions), dispatch);
+	return {
+		todoActions: bindActionCreators(todoActions, dispatch),
+		msgActions: bindActionCreators(msgActions, dispatch)
+	};
 }
 export const TodoAppContainer = connect(mapStateToProps, mapDispatchToProps)(TodoApp);
