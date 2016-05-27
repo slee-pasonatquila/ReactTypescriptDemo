@@ -41,7 +41,7 @@ function cancelEditing(state, action) {
 	const updatedItem = state.get('todos')
 							.get(itemIndex)
 							.set('editing', false);
-	showMsg(MsgTypes.MSG_INFO, 'edit is canceled');
+	showMsg(MsgTypes.MSG_WARNING, 'edit is canceled');
 	return state.update('todos', todos => todos.set(itemIndex, updatedItem));
 }
 
@@ -51,12 +51,12 @@ function doneEditing(state, action) {
 							.get(itemIndex)
 							.set('editing', false)
 							.set('text', action.payload.newText);
-	showMsg(MsgTypes.MSG_INFO, 'Todo is changed.');
+	showMsg(MsgTypes.MSG_SUCCESS, 'Todo is changed.');
 	return state.update('todos', todos => todos.set(itemIndex, updatedItem));
 }
 
 function clearCompleted(state) {
-	showMsg(MsgTypes.MSG_WARNING, 'Delete the Todos which is completed.');
+	showMsg(MsgTypes.MSG_SUCCESS, 'Completed todos is deleted.');
 	return state.update('todos',
 		(todos) => todos.filterNot(
 			(item) => item.get('status') === 'completed'

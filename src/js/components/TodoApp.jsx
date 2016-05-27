@@ -7,6 +7,9 @@ import * as filterType from '../constants/TodoFilters';
 import Alert from 'react-s-alert';
 
 export default class TodoApp extends React.Component {
+	componentDidMount() {
+		this.props.showMessage('MSG_INFO', 'App is started.');
+	}
 	getNbActiveItems() {
 		if (this.props.todos) {
 			const activeItems = this.props.todos.filter(
@@ -44,5 +47,6 @@ TodoApp.propTypes = {
 	toggleComplete: React.PropTypes.func,
 	doneEditing: React.PropTypes.func,
 	cancelEditing: React.PropTypes.func,
-	deleteItem: React.PropTypes.func
+	deleteItem: React.PropTypes.func,
+	showMessage: React.PropTypes.func
 };

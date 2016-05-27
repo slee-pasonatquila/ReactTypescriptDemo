@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/todoActions';
+import { bindActionCreators } from 'redux';
+import * as todoActions from '../actions/todoActions';
+import * as msgActions from '../actions/msgActions';
 import TodoApp from '../components/TodoApp';
 
 function mapStateToProps(state) {
@@ -8,4 +10,7 @@ function mapStateToProps(state) {
 		filter: state.todoReducer.get('filter')
 	};
 }
-export const TodoAppContainer = connect(mapStateToProps, actionCreators)(TodoApp);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(Object.assign({}, todoActions, msgActions), dispatch);
+}
+export const TodoAppContainer = connect(mapStateToProps, mapDispatchToProps)(TodoApp);
